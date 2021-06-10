@@ -1,0 +1,29 @@
+
+import useMount from "@/use/use-mount";
+import Page from "@/components/uiPage/UIPage";
+
+import "./<%=pageName%>-container.less";
+
+const <%=className%> = () => {
+
+    useMount(() => {
+        // 页面挂载
+    }, () => {
+        // 页面销毁
+    })
+
+    return (
+        <Page
+            title=""
+            className="<%=pageName%>-container"
+            routeName="<%=pageName%>"
+            outLint={true}
+        >
+            <div className="<%=pageName%>-body">
+                {/* 页面内容 */}
+            </div>
+        </Page>
+    )
+}
+
+export default <%=className%>;
