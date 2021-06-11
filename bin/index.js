@@ -44,7 +44,7 @@ function createEntryPointFileTask(content) {
     return new FileTask({
       content,
       name: "创建js文件",
-      filename: options.className + "Component.jsx",
+      filename: options.className + "Container.jsx",
       path: getPath(),
     });
 }
