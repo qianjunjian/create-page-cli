@@ -2,6 +2,7 @@ const FileTask = require("./FileTask");
 const FolderTask = require("./FolderTask");
 const CommandTask = require("./CommandTask");
 const CssFileTask = require("./CssFileTask");
+const ImportTask = require("./ImportTask");
 const chalk = require("chalk");
 const log = console.log;
 
@@ -39,9 +40,10 @@ module.exports = class TaskManager {
     // 在执行所有文件的task
     await this.executeTaskByType(CssFileTask.type);
 
+    await this.executeTaskByType(ImportTask.type);
+
     //执行所有的 command task
     await this.executeTaskByType(CommandTask.type);
-    
   }
 
   async executeTaskByType(commandType) {

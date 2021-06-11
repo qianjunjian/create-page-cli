@@ -8,6 +8,7 @@ const CssFileTask = require("./task/CssFileTask");
 const path = require("path");
 const createFile = require("./createFile");
 const createCssFile = require("./createCssFile");
+const ImportTask = require("./task/ImportTask");
 
 const containerDir = "./src/containers/";
 
@@ -22,6 +23,8 @@ const containerDir = "./src/containers/";
 
     const code2 = await createCssFile(options);
     taskManager.add(createEntryPointCssFileTask(code2));
+
+    taskManager.add(createImportTask(options));
 
     await taskManager.execute();
 })();
@@ -52,5 +55,16 @@ function createEntryPointCssFileTask(content) {
       name: "创建css文件",
       filename: options.pageName + "-container.less",
       path: getPath(),
+    });
+}
+
+function createImportTask(options) {
+    return new ImportTask({
+      name: "创建路由",
+      filename: options.pageName + "-container.less",
+      path: path.resolve(process.cwd(), containerDir),
+      containerName: "Container.jsx",
+      pageName: options.pageName,
+      className: options.className
     });
 }
