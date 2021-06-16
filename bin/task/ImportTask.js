@@ -58,6 +58,12 @@ module.exports = class ImportTask extends BaseTask {
             importFlag = true;
             fWrite.write(ipmortText + os.EOL);
             fWrite.write(line + os.EOL);
+        } else if (!importRouteFlag && findRouteFlag && line.indexOf("<Redirect") >= 0 && line.indexOf("from") < 0) {
+            importRouteFlag = true;
+            fWrite.write(ipmortText2 + os.EOL);
+            fWrite.write(ipmortText3 + os.EOL);
+            fWrite.write(ipmortText4 + os.EOL);
+            fWrite.write(line + os.EOL);
         } else if (!importRouteFlag && findRouteFlag && line.indexOf("</Switch>") >= 0) {
             importRouteFlag = true;
             fWrite.write(ipmortText2 + os.EOL);
