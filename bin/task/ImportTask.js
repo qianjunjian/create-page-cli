@@ -54,7 +54,7 @@ module.exports = class ImportTask extends BaseTask {
         if (!findRouteFlag && line.indexOf("</Route>") >= 0) {
             findRouteFlag = true;
         }
-        if (!importFlag && findLazy && line.indexOf("lazy") < 0 && line.indexOf("=>") < 0 ) {
+        if (!importFlag && findLazy && line.indexOf("lazy") < 0 && line.indexOf("=>") < 0 && line.indexOf("//") < 0 ) {
             importFlag = true;
             fWrite.write(ipmortText + os.EOL);
             fWrite.write(line + os.EOL);
